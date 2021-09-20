@@ -7,6 +7,8 @@ import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MyApp());
+  //something test
+
 }
 
 class MyApp extends StatelessWidget {
@@ -86,7 +88,7 @@ Text("Application aimed at singles looking \nfor a serious relationship",style: 
 
             },
             shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(35.0),
+              borderRadius: new BorderRadius.circular(30.0),
             ),
           ),
 
