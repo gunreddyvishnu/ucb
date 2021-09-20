@@ -441,7 +441,7 @@ class _MainscreenState extends State<Mainscreen> {
               ),
               Container(
                 height: 700,
-                color: Colors.red,
+                color: Colors.pink,
 
               )
 
