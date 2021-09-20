@@ -86,7 +86,7 @@ Text("Application aimed at singles looking \nfor a serious relationship",style: 
 
             },
             shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(35.0),
+              // borderRadius: new BorderRadius.circular(35.0),
             ),
           ),
 
@@ -441,7 +441,7 @@ class _MainscreenState extends State<Mainscreen> {
               ),
               Container(
                 height: 700,
-                color: Colors.black38,
+                color: Colors.red,
 
               )
 
@@ -453,4 +453,4 @@ class _MainscreenState extends State<Mainscreen> {
     );
   }
 }
-//this is a test file
+
