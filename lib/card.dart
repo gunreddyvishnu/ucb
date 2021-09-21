@@ -184,5 +184,4 @@ class _cardState extends State<card> {
     );
   }
 
-  ///
 }
