@@ -59,8 +59,14 @@ class _MypageState extends State<Mypage> {
 
             children: [
 
-            Center(child: Text("dating",style: TextStyle(color: Color(0xffff0404),fontSize: 33,fontWeight: FontWeight.bold
-            ),)),
+            Center(
+                  child: Text(
+                "dating",
+                style: TextStyle(
+                    color: Color(0xffFF005C),
+                    fontSize: 33,
+                    fontWeight: FontWeight.bold),
+              )),
 
             Center(child: Text(" online",style: TextStyle(color: Colors.white,fontSize: 33,fontWeight: FontWeight.bold
             ),))
@@ -78,18 +84,15 @@ Text("Application aimed at singles looking \nfor a serious relationship",style: 
           SizedBox(height: 30,),
           RaisedButton(
             textColor: Colors.white,
-            color: Color(0xffff0404),
+            color: Color(0xffFF005C),
             child: Padding(
               padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
-              child: Text("Continue",style: TextStyle(
-                color:Colors.white,
-                fontSize: 22
-              ),),
+              child: Text(
+                "Continue",
+                style: TextStyle(color: Colors.white, fontSize: 22),
+              ),
             ),
-            onPressed: () {
-
-
-            },
+            onPressed: () {},
             shape: new RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(30.0),
             ),
@@ -163,10 +166,8 @@ padding: EdgeInsets.fromLTRB(0, 23, 0, 18),
                       color: Color(0xff2b2b2b),
                       borderRadius: BorderRadius.circular(5)
                     ),
-                    
-                    padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
-                
-                    height: 56,
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 5),
+                      height: 56,
                     child: TextField(
 cursorColor: Colors.white,
                       cursorHeight: 24,
@@ -178,25 +179,20 @@ cursorColor: Colors.white,
                     ),
                   ),
                 ),
-                  
-
                   Padding(
                     padding: EdgeInsets.fromLTRB(0, 20, 0, 23),
                     child: Center(
                       child: RaisedButton(
                         textColor: Colors.white,
-                        color: Color(0xffff0404),
+                        color: Color(0xffFF005C),
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(40, 13, 40, 13),
-                          child: Text("Next",style: TextStyle(
-                              color:Colors.white,
-                              fontSize: 22
-                          ),),
+                          child: Text(
+                            "Next",
+                            style: TextStyle(color: Colors.white, fontSize: 22),
+                          ),
                         ),
-                        onPressed: () {
-
-
-                        },
+                        onPressed: () {},
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                         ),
@@ -319,18 +315,15 @@ class _password_entryState extends State<password_entry> {
                     child: Center(
                       child: RaisedButton(
                         textColor: Colors.white,
-                        color: Color(0xffff0404),
+                        color: Color(0xffFF005C),
                         child: Padding(
                           padding: EdgeInsets.fromLTRB(40, 13, 40, 13),
-                          child: Text("Login",style: TextStyle(
-                              color:Colors.white,
-                              fontSize: 22
-                          ),),
+                          child: Text(
+                            "Login",
+                            style: TextStyle(color: Colors.white, fontSize: 22),
+                          ),
                         ),
-                        onPressed: () {
-
-
-                        },
+                        onPressed: () {},
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10.0),
                         ),
@@ -371,21 +364,26 @@ class HomePage1 extends StatefulWidget {
 }
 
 class _HomePage1State extends State<HomePage1> {
-  bool curentview=false;
+  bool curentview = false;
+  int selectIndex = 0;
+  List data = [
+    Icons.home_outlined,
+    Icons.add_box_outlined,
+    Icons.favorite_outline_sharp,
+  ];
   final _drawerController = ZoomDrawerController();
+  int currentscreen = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-body: ZoomDrawer(
-
-  controller: _drawerController,
-  style: DrawerStyle.DefaultStyle,
-  menuScreen: Container(
-    color: Colors.green,
-    child: Column(children: [
-
-
-    ],),
+      body: ZoomDrawer(
+        controller: _drawerController,
+        style: DrawerStyle.DefaultStyle,
+        menuScreen: Container(
+          color: Colors.green,
+          child: Column(
+            children: [],),
   ),
   mainScreen: SafeArea(
     child: Stack(
@@ -460,48 +458,57 @@ print("starting page");
             children: [
 
               Container(
-                color: Color(0xff2b2b2b),
-                child: Column(children: [
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      IconButton(onPressed: (){
-print("soooooooooooooooooooooooooooooooooooooooooooo");
-// _drawerController.open;
-                        _drawerController.open!();
-
-
-                      }, icon: Icon(Icons.list,color: Color(0xffff0404),)),
-
-                      Container(
-                        padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
-                        child: Center(
-                          child: TextField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none
-                            ),
-                            cursorColor: Colors.white,
-                            cursorHeight: 22,
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize:18
-                            ),
-
+                color: Colors.grey[50],
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 10,
                           ),
-                        ),
-                        decoration: BoxDecoration(
-                            color: Color(0xff535353),
-                            borderRadius: BorderRadius.circular(50)
-                        ),
-                        width: MediaQuery.of(context).size.width-120,
-                        height: 49,
-                      ),
-                      IconButton(onPressed: (){}, icon: Icon(Icons.send,color: Color(0xffff0404),)),
-
-
-                    ],
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    print(
+                                        "soooooooooooooooooooooooooooooooooooooooooooo");
+// _drawerController.open;
+                                    _drawerController.open!();
+                                  },
+                                  icon: Icon(
+                                    Icons.list,
+                                    color: Color(0xffFF005C),
+                                  )),
+                              Material(
+                                elevation: 3,
+                                borderRadius: BorderRadius.circular(50),
+                                child: Container(
+                                  padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
+                                  child: Center(
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          border: InputBorder.none),
+                                      cursorColor: Colors.black,
+                                      cursorHeight: 22,
+                                      style: TextStyle(
+                                          color: Colors.black, fontSize: 18),
+                                    ),
+                                  ),
+                                  decoration: BoxDecoration(
+                                      color: Color(0xffffffff),
+                                      borderRadius: BorderRadius.circular(50)),
+                                  // width: MediaQuery.of(context).size.width-120,
+                                  width:
+                                      MediaQuery.of(context).size.width / 1.5,
+                                  height: 40,
+                                ),
+                              ),
+                              IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.send,
+                                    color: Color(0xffFF005C),
+                                  )),
+                            ],
                   ),
 
 
@@ -509,19 +516,50 @@ print("soooooooooooooooooooooooooooooooooooooooooooo");
                 ],),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-                color: Color(0xff2b2b2b),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-
-                    Text("All Profiles",style: TextStyle(color: Color(0xffff0404),fontSize: 19,fontWeight: FontWeight.bold),),
-                    Text("|",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 29),),
-                    Text("Matches",style: TextStyle(color: Colors.white,fontSize: 19,fontWeight: FontWeight.bold),)
-
-                  ],),
-              ),
-            ],
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+                      // margin: EdgeInsets.only(left: 16,bottom: 4),
+                      color: Colors.grey[50],
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            child: Text(
+                              "All Profiles",
+                              style: TextStyle(
+                                  color: Color(0xff484848),
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onTap: () {},
+                          ),
+                          SizedBox(
+                            width: 25,
+                          ),
+                          InkWell(
+                            child: Text(
+                              "Matches",
+                              style: TextStyle(
+                                  color: Color(0xff484848),
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            onTap: () {},
+                          )
+                        ],
+                      ),
+                    ),
+                    // AnimatedPositioned(
+                    //   duration: Duration(milliseconds: 400),
+                    //   curve: Curves.fastOutSlowIn,
+                    //   child: Container(
+                    //     width: 100,
+                    //     height: 5,
+                    //     decoration: ShapeDecoration(
+                    //         shape: StadiumBorder(),
+                    //     color: Color(0xffFF005C)),
+                    //   ),
+                    // )
+                  ],
           ),
         ),
 
@@ -529,15 +567,60 @@ print("soooooooooooooooooooooooooooooooooooooooooooo");
 
       ],
     ),
-  ),
-
-  borderRadius: 40.0,
-  showShadow: true,
-  angle: -12.0,
-  backgroundColor: Colors.grey,
-  slideWidth: MediaQuery.of(context).size.width*.55,
-  openCurve: Curves.fastOutSlowIn,
+        ),
+        borderRadius: 40.0,
+        showShadow: true,
+        angle: -12.0,
+        backgroundColor: Colors.grey,
+        slideWidth: MediaQuery.of(context).size.width * .55,
+        openCurve: Curves.fastOutSlowIn,
         closeCurve: Curves.bounceIn,
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(15),
+        child: Material(
+          elevation: 10,
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.white,
+          child: Container(
+            height: 60,
+            width: double.infinity,
+            child: ListView.builder(
+              itemCount: data.length,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              itemBuilder: (ctx, i) => Center(
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: MediaQuery.of(context).size.width / 9.5),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        selectIndex = i;
+                      });
+                    },
+                    child: AnimatedContainer(
+                      duration: Duration(milliseconds: 250),
+                      width: 35,
+                      decoration: BoxDecoration(
+                          border: i == selectIndex
+                              ? Border(
+                                  top:
+                                      BorderSide(width: 3, color: Colors.white))
+                              : null),
+                      child: Icon(
+                        data[i],
+                        size: 35,
+                        color:
+                            i == selectIndex ? Color(0xffFF005C) : Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              scrollDirection: Axis.horizontal,
+            ),
+          ),
+        ),
       ),
 
 //ddd

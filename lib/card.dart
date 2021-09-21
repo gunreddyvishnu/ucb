@@ -28,7 +28,7 @@ class _cardState extends State<card> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              height: 100,
+              height: 120,
             ),
             AspectRatio(
               aspectRatio: 1 / 1,
@@ -89,7 +89,7 @@ class _cardState extends State<card> {
                               fontSize: 18),
                         ),
                         SizedBox(
-                          height: 5,
+                          height: 10,
                         ),
                         RichText(
                           text: TextSpan(
@@ -135,52 +135,52 @@ class _cardState extends State<card> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.all(15),
-        child: Material(
-          elevation: 10,
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.white,
-          child: Container(
-            height: 75,
-            width: double.infinity,
-            child: ListView.builder(
-              itemCount: data.length,
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              itemBuilder: (ctx, i) => Center(
-                child: Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width / 9.5),
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectIndex = i;
-                      });
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 250),
-                      width: 35,
-                      decoration: BoxDecoration(
-                          border: i == selectIndex
-                              ? Border(
-                                  top:
-                                      BorderSide(width: 3, color: Colors.white))
-                              : null),
-                      child: Icon(
-                        data[i],
-                        size: 35,
-                        color:
-                            i == selectIndex ? Color(0xffFF005C) : Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              scrollDirection: Axis.horizontal,
-            ),
-          ),
-        ),
-      ),
+      // bottomNavigationBar: Padding(
+      //   padding: EdgeInsets.all(15),
+      //   child: Material(
+      //     elevation: 10,
+      //     borderRadius: BorderRadius.circular(15),
+      //     color: Colors.white,
+      //     child: Container(
+      //       height: 60,
+      //       width: double.infinity,
+      //       child: ListView.builder(
+      //         itemCount: data.length,
+      //         padding: EdgeInsets.symmetric(horizontal: 10),
+      //         itemBuilder: (ctx, i) => Center(
+      //           child: Container(
+      //             padding: EdgeInsets.symmetric(
+      //                 horizontal: MediaQuery.of(context).size.width / 9.5),
+      //             child: GestureDetector(
+      //               onTap: () {
+      //                 setState(() {
+      //                   selectIndex = i;
+      //                 });
+      //               },
+      //               child: AnimatedContainer(
+      //                 duration: Duration(milliseconds: 250),
+      //                 width: 35,
+      //                 decoration: BoxDecoration(
+      //                     border: i == selectIndex
+      //                         ? Border(
+      //                             top:
+      //                                 BorderSide(width: 3, color: Colors.white))
+      //                         : null),
+      //                 child: Icon(
+      //                   data[i],
+      //                   size: 35,
+      //                   color:
+      //                       i == selectIndex ? Color(0xffFF005C) : Colors.black,
+      //                 ),
+      //               ),
+      //             ),
+      //           ),
+      //         ),
+      //         scrollDirection: Axis.horizontal,
+      //       ),
+      //     ),
+      //   ),
+      // ),
     );
   }
 
