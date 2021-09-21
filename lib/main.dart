@@ -518,18 +518,12 @@ print("soooooooooooooooooooooooooooooooooooooooooooo");
   backgroundColor: Colors.grey,
   slideWidth: MediaQuery.of(context).size.width*.55,
   openCurve: Curves.fastOutSlowIn,
-  closeCurve: Curves.bounceIn,
-),
+        closeCurve: Curves.bounceIn,
+      ),
 
-
-
-
+//ddd
     );
   }
 }
 
 //////////////////....................///////////////////////////////////////////////
-
-
-
-
