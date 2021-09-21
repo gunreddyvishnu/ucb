@@ -3,6 +3,9 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
+import 'globalcontroller.dart';
 
 
 void main() {
@@ -22,13 +25,12 @@ class MyApp extends StatelessWidget {
       //home: Mypage(),
    //   home: Screen2(),
      // home:password_entry(),
-     home: Mainscreen(),
-
-
+     // home: Mainscreen(),
+home: HomePage1(),
+// home: Lolalal(),
     );
   }
 }
-
 /// on start page
 
 class Mypage extends StatefulWidget {
@@ -358,99 +360,176 @@ class _password_entryState extends State<password_entry> {
 
 
 
-class Mainscreen extends StatefulWidget {
-  const Mainscreen({Key? key}) : super(key: key);
+class HomePage1 extends StatefulWidget {
+  const HomePage1({Key? key}) : super(key: key);
 
   @override
-  _MainscreenState createState() => _MainscreenState();
+  _HomePage1State createState() => _HomePage1State();
 }
 
-class _MainscreenState extends State<Mainscreen> {
-
+class _HomePage1State extends State<HomePage1> {
+  bool curentview=false;
+  final _drawerController = ZoomDrawerController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+body: ZoomDrawer(
 
-      body: CustomScrollView(
-
-        slivers: [
-
-          SliverAppBar(
-
-            snap: true,
-            floating: true,
-            titleSpacing: 8,
-
-            backgroundColor: Color(0xff2b2b2b),
-            title: Container(
-             child: Column(children: [
-               Row(
-                 children: [
-                   IconButton(onPressed: (){}, icon: Icon(Icons.list,color: Color(0xffff0404),)),
-
-                   Container(
-                     decoration: BoxDecoration(
-                       color: Color(0xff535353),
-                       borderRadius: BorderRadius.circular(20)
-                     ),
-                     width: MediaQuery.of(context).size.width-120,
-                     height: 40,
-                   ),
-                   IconButton(onPressed: (){}, icon: Icon(Icons.send,color: Color(0xffff0404),)),
+  controller: _drawerController,
+  style: DrawerStyle.DefaultStyle,
+  menuScreen: Container(
+    color: Colors.green,
+    child: Column(children: [
 
 
-                 ],
-               ),
+    ],),
+  ),
+  mainScreen: SafeArea(
+    child: Stack(
+      children: [
+        GestureDetector(
+          onTap: (){
+            setState(() {
+              Globalconroller.navbarvisible=!Globalconroller.navbarvisible;
+
+            });
+
+
+          },
+          onVerticalDragUpdate: (details) {
+            int sensitivity = 8;
+            if (details.delta.dy > sensitivity) {
+              print("down swipe");
+              // Down Swipe
+              Globalconroller.pagecont1.previousPage(duration: Duration(milliseconds: 400), curve: Curves.linear);
+              setState(() {
+                Globalconroller.navbarvisible=true;
+              });
 
 
 
-             ],),
-            ),
+
+            } else if(details.delta.dy < -sensitivity){
+              print("up swipe");
+
+              Globalconroller.pagecont1.nextPage(duration: Duration(milliseconds: 400), curve: Curves.linear);
+              // Up Swipe
+              setState(() {
+                Globalconroller.navbarvisible=false;
+
+              });
+            }
+          },
+          child: PageView(
+            controller: Globalconroller.pagecont1,
+            physics: NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            children: [
+
+              Container(color: Colors.red,),
+              Container(color: Colors.green,),
+              Container(color: Colors.blue),
+
+            ],
           ),
-          // Next, create a SliverList
-          SliverToBoxAdapter(
-            child: Container(
-              padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
-              color: Color(0xff2b2b2b),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-
-              Text("All Profiles",style: TextStyle(color: Color(0xffff0404),fontSize: 19,fontWeight: FontWeight.bold),),
-             Text("|",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 29),),
-              Text("Matches",style: TextStyle(color: Colors.white,fontSize: 19,fontWeight: FontWeight.bold),)
-
-            ],),
-            ),
-          ),
+        ),
 
 
-          SliverList(
-            delegate: SliverChildListDelegate([
+        Visibility(
+          visible: Globalconroller.navbarvisible,
+          child: Column(
+            children: [
 
               Container(
-                height: 700,
-                color: Colors.pink,
+                color: Color(0xff2b2b2b),
+                child: Column(children: [
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      IconButton(onPressed: (){
+print("soooooooooooooooooooooooooooooooooooooooooooo");
+// _drawerController.open;
+                        _drawerController.open!();
 
+
+                      }, icon: Icon(Icons.list,color: Color(0xffff0404),)),
+
+                      Container(
+                        padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
+                        child: Center(
+                          child: TextField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none
+                            ),
+                            cursorColor: Colors.white,
+                            cursorHeight: 22,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize:18
+                            ),
+
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Color(0xff535353),
+                            borderRadius: BorderRadius.circular(50)
+                        ),
+                        width: MediaQuery.of(context).size.width-120,
+                        height: 49,
+                      ),
+                      IconButton(onPressed: (){}, icon: Icon(Icons.send,color: Color(0xffff0404),)),
+
+
+                    ],
+                  ),
+
+
+
+                ],),
               ),
-
               Container(
-                height: 700,
-                color: Colors.green,
+                padding: EdgeInsets.fromLTRB(0, 20, 0, 20),
+                color: Color(0xff2b2b2b),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
 
+                    Text("All Profiles",style: TextStyle(color: Color(0xffff0404),fontSize: 19,fontWeight: FontWeight.bold),),
+                    Text("|",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 29),),
+                    Text("Matches",style: TextStyle(color: Colors.white,fontSize: 19,fontWeight: FontWeight.bold),)
+
+                  ],),
               ),
-              Container(
-                height: 700,
-                color: Colors.pink,
-
-              )
-
-            ]),
+            ],
           ),
+        ),
 
-        ],
-      ),
+
+
+      ],
+    ),
+  ),
+
+  borderRadius: 40.0,
+  showShadow: true,
+  angle: -12.0,
+  backgroundColor: Colors.grey,
+  slideWidth: MediaQuery.of(context).size.width*.55,
+  openCurve: Curves.fastOutSlowIn,
+  closeCurve: Curves.bounceIn,
+),
+
+
+
+
     );
   }
 }
+
+//////////////////....................///////////////////////////////////////////////
+
+
+
 
