@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
+import 'custom_cache/userdata_cache.dart';
 import 'globalcontroller.dart';
 
 
@@ -430,17 +431,21 @@ body: ZoomDrawer(
             physics: NeverScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              if(index==0){
-                print("first page");
+              if (index == 0) {
+                // card();
+print("starting page");
 
                 return card();
               }
-              else{
-
+              // else if()
+              else if (index == user_cache().userdata.length) {
+                print("no more pages left");
                 return card();
-
               }
-            },
+              else {
+                return card();
+              }
+            }
             // children: [
             //
             //   card()
