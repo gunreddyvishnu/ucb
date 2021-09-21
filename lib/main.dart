@@ -1,8 +1,10 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutt1/card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 
 import 'globalcontroller.dart';
@@ -401,7 +403,8 @@ body: ZoomDrawer(
             if (details.delta.dy > sensitivity) {
               print("down swipe");
               // Down Swipe
-              Globalconroller.pagecont1.previousPage(duration: Duration(milliseconds: 400), curve: Curves.linear);
+              HapticFeedback.mediumImpact();
+              Globalconroller.pagecont1.previousPage(duration: Duration(milliseconds: 500), curve: Curves.linear);
               setState(() {
                 Globalconroller.navbarvisible=true;
               });
@@ -411,8 +414,9 @@ body: ZoomDrawer(
 
             } else if(details.delta.dy < -sensitivity){
               print("up swipe");
+              HapticFeedback.mediumImpact();
 
-              Globalconroller.pagecont1.nextPage(duration: Duration(milliseconds: 400), curve: Curves.linear);
+              Globalconroller.pagecont1.nextPage(duration: Duration(milliseconds: 500), curve: Curves.linear);
               // Up Swipe
               setState(() {
                 Globalconroller.navbarvisible=false;
@@ -420,17 +424,27 @@ body: ZoomDrawer(
               });
             }
           },
-          child: PageView(
+          child: PageView.builder(
+
             controller: Globalconroller.pagecont1,
             physics: NeverScrollableScrollPhysics(),
             scrollDirection: Axis.vertical,
-            children: [
+            itemBuilder: (BuildContext context, int index) {
+              if(index==0){
+                print("first page");
 
-              Container(color: Colors.red,),
-              Container(color: Colors.green,),
-              Container(color: Colors.blue),
+                return card();
+              }
+              else{
 
-            ],
+                return card();
+
+              }
+            },
+            // children: [
+            //
+            //   card()
+            // ],
           ),
         ),
 
