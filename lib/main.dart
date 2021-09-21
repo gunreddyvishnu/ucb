@@ -3,7 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-
+import 'card.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,15 +16,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       //home: Mypage(),
-   //   home: Screen2(),
-     // home:password_entry(),
-     home: Mainscreen(),
-
-
+      //   home: Screen2(),
+      // home:password_entry(),
+      home: card(),
     );
   }
 }
