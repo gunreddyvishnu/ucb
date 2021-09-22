@@ -527,7 +527,7 @@ print("starting page");
                               "All Profiles",
                               style: TextStyle(
                                   color: Color(0xff484848),
-                                  fontSize: 19,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
                             onTap: () {},
@@ -540,7 +540,7 @@ print("starting page");
                               "Matches",
                               style: TextStyle(
                                   color: Color(0xff484848),
-                                  fontSize: 19,
+                                  fontSize: 18,
                                   fontWeight: FontWeight.bold),
                             ),
                             onTap: () {},
@@ -548,6 +548,7 @@ print("starting page");
                         ],
                       ),
                     ),
+
                     // AnimatedPositioned(
                     //   duration: Duration(milliseconds: 400),
                     //   curve: Curves.fastOutSlowIn,
@@ -587,7 +588,7 @@ print("starting page");
             width: double.infinity,
             child: ListView.builder(
               itemCount: data.length,
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              // padding: EdgeInsets.symmetric(horizontal: 10),
               itemBuilder: (ctx, i) => Center(
                 child: Container(
                   padding: EdgeInsets.symmetric(
